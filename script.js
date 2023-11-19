@@ -48,22 +48,42 @@ TS!!
 - Keszits alprogramot, ami megadja a parameterul kapott auto tombbol a benzinesek darabszamat
 - A valtoztatasokat toltsd fel a github repodba
 */
-var autok = [];
-function MinÍAuto(autok) {
+function MinAuto(autok) {
     var minAuto = autok[0];
-    for (var i = 0; i < autok.length; i++) {
+    for (var i = 1; i < autok.length; i++) {
         if (autok[i].hengerurtartalom < minAuto.hengerurtartalom) {
             minAuto = autok[i];
         }
     }
     return minAuto;
 }
-function MennyiBenzines(autok) {
-    var benzinesDb = 0;
+function BenzinesDb(autok) {
+    var db = 0;
     for (var i = 0; i < autok.length; i++) {
         if (autok[i].benzineE == true) {
-            benzinesDb++;
+            db++;
         }
     }
-    return benzinesDb;
+    return db;
 }
+var a1 = {
+    gyarto: "Opel",
+    tipus: "Corsa",
+    hengerurtartalom: 1200,
+    benzineE: true
+};
+var a2 = {
+    gyarto: "Volkswagen",
+    tipus: "Polo",
+    hengerurtartalom: 1400,
+    benzineE: false
+};
+var a3 = {
+    gyarto: "Skoda",
+    tipus: "Octavia",
+    hengerurtartalom: 1600,
+    benzineE: true
+};
+var autok = [a1, a2, a3];
+console.log(MinAuto(autok));
+console.log(BenzinesDb(autok));

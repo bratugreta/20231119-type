@@ -72,13 +72,12 @@ TS!!
 - A valtoztatasokat toltsd fel a github repodba
 */
 
-var autok:Auto[] = [];
 
-function MinÍAuto(autok:Auto[]):Auto{
+function MinAuto(autok:Auto[]):Auto{
     var minAuto:Auto = autok[0];
 
 
-    for(var i:number = 0; i < autok.length; i++){
+    for(var i:number = 1; i < autok.length; i++){
         if(autok[i].hengerurtartalom < minAuto.hengerurtartalom){
             minAuto = autok[i];
         }
@@ -86,13 +85,39 @@ function MinÍAuto(autok:Auto[]):Auto{
     return minAuto;
 }
 
-function MennyiBenzines(autok:Auto[]):number{
-    var benzinesDb:number = 0;
+function BenzinesDb(autok:Auto[]):number{
+    var db:number = 0;
 
     for(var i:number = 0; i < autok.length; i++){
         if(autok[i].benzineE == true){
-            benzinesDb++;
+            db++;
         }
     }
-    return benzinesDb;
+    return db;
 }
+
+var a1:Auto = {
+    gyarto: "Opel",
+    tipus: "Corsa",
+    hengerurtartalom: 1200,
+    benzineE: true
+};
+
+var a2:Auto = {
+    gyarto: "Volkswagen",
+    tipus: "Polo",
+    hengerurtartalom: 1400,
+    benzineE: false
+};
+
+var a3:Auto = {
+    gyarto: "Skoda",
+    tipus: "Octavia",
+    hengerurtartalom: 1600,
+    benzineE: true
+};
+
+var autok:Auto[] = [a1, a2, a3];
+
+console.log(MinAuto(autok));
+console.log(BenzinesDb(autok));
